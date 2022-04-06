@@ -1,6 +1,8 @@
 <h1><%= @machine.NAME %></h1>
+<div class="card">
 <% @machine.attributes.each do |attr_name, attr_value| %>
-  <div class="card">
+  <%if attr_name != "FULL_ADDRESS"%>
     <p><strong><%= attr_name %>:</strong> <%= attr_value %></p>
-  </div>
+  <% end %>
 <% end %>
+</div>
