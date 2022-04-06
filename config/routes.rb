@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "machines#index"
-  resources :machines, only: [:show]
+  root :to => redirect('/machines')
+  resources :machines, only: [:show, :index]
 end
