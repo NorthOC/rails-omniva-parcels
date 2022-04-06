@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_05_174638) do
+ActiveRecord::Schema.define(version: 2022_04_06_182735) do
 
   create_table "machines", force: :cascade do |t|
     t.string "ZIP"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2022_04_05_174638) do
     t.string "MODIFIED"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "FULL_ADDRESS"
   end
 
 end

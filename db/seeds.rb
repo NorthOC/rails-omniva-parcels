@@ -21,8 +21,25 @@ puts "complete!"
 #populate db
 puts "Repopulating database..."
 data.each_with_index do |item, index|
+
+  #generate full adress for (used in filtering)
+  if item["A8_NAME"] != ""
+    adress = [item["A5_NAME"] + " " + item["A7_NAME"] + "-" + item["A8_NAME"], item["A2_NAME"], item["A1_NAME"]]
+  else
+    adress = [item["A5_NAME"] + " " + item["A7_NAME"], item["A2_NAME"], item["A1_NAME"]]
+  end
+  addr_string = ""
+  adress.each do |piece|
+    if piece != ""
+      addr_string += piece + ", "
+    end
+  end
+  addr_string += item["A0_NAME"]
+
   puts "#{index}: adding #{item["NAME"]}"
+
   thing = Machine.new(
+    id: index,
     ZIP: item["ZIP"], 
     NAME: item["NAME"], 
     TYPE: item["TYPE"], 
@@ -34,7 +51,7 @@ data.each_with_index do |item, index|
     A5_NAME: item["A5_NAME"], 
     A6_NAME: item["A6_NAME"], 
     A7_NAME: item["A7_NAME"], 
-    A8_NAME: item["A8_NAME"], 
+    A8_NAME: item["A8_NAME"],
     X_COORDINATE: item["X_COORDINATE"], 
     Y_COORDINATE: item["Y_COORDINATE"], 
     SERVICE_HOURS: item["SERVICE_HOURS"], 
@@ -47,7 +64,9 @@ data.each_with_index do |item, index|
     comment_rus: item["comment_rus"], 
     comment_lav: item["comment_lav"], 
     comment_lit: item["comment_lit"], 
-    MODIFIED: item["MODIFIED"]
+    MODIFIED: item["MODIFIED"],
+    #adress for easier db filtering
+    FULL_ADDRESS: addr_string
   )
 
   thing.save
