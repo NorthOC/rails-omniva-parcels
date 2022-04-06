@@ -1,1 +1,6 @@
 <h1><%= @machine.NAME %></h1>
+<% @machine.attributes.each do |attr_name, attr_value| %>
+  <div class="card">
+    <p><strong><%= attr_name %>:</strong> <%= attr_value %></p>
+  </div>
+<% end %>

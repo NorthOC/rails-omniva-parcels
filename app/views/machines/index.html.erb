@@ -1,9 +1,31 @@
 <h1>Machines</h1>
 
-<ul>
+ <table>
+  <tr>
+    <th>Zip code</th>
+    <th>Name</th>
+    <th>Adress</th>
+  </tr>
   <% @machines.each do |item| %>
-    <li>
-    <%= link_to item.NAME, item %>
-    </li>
+    <tr>
+    <td class='text-center'><a href='/machines/<%=item.id%>'><%= item.ZIP %></a></td>
+    <td><a href='/machines/<%=item.id%>'><%= item.NAME %></a></td>
+
+    <%if item.A8_NAME != ""%>
+      <% adress = [item.A5_NAME, item.A7_NAME + "-" + item.A8_NAME, item.A2_NAME, item.A1_NAME]%>
+    <%else%>
+      <% adress = [item.A5_NAME, item.A7_NAME, item.A2_NAME, item.A1_NAME]%>
+    <%end%>
+    <% addr_string = " "%>
+    <% adress.each do |piece| %>
+      <% if piece != ""%>
+        <% addr_string += piece + ", "%>
+      <% end %>
+    <% end %>
+    <% addr_string += item.A0_NAME%>
+
+    <td><a href='/machines/<%=item.id%>'><%= addr_string %></a></td>
+
+    </tr>
   <% end %>
-</ul>
+</table>

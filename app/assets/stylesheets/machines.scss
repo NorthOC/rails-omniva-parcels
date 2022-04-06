@@ -1,3 +1,23 @@
 // Place all the styles related to the Machines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+a {
+  display: inline-block; 
+  width: 100%;
+}
+td, th, tr, table{
+  border-collapse: collapse;
+}
+th, td {
+  border-right: 1px solid black;
+
+}
+table{
+  margin: auto;
+}
+tr{
+  border: 1px solid black;
+}
+.text-center{
+  text-align: center;
+}
