@@ -1,6 +1,7 @@
 class MachinesController < ApplicationController
   
   def index
+    #filtravimas
     if params[:filter] == 'zip'
       @machines = Machine.where(ZIP: params[:query])
 
@@ -18,6 +19,11 @@ class MachinesController < ApplicationController
       @machines = Machine.all()
     end
 
+    #export to csv
+    respond_to do |format|
+      format.csv {send_data @machines.to_csv }
+      format.html
+    end
   end
 
   def show
