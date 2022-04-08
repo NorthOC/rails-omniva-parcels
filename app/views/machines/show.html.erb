@@ -1,8 +1,20 @@
 <h1><%= @machine.NAME %></h1>
-<div class="card">
+<%= link_to "BACK", machines_path()%>
+
+<table class='info-table'>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+
 <% @machine.attributes.each do |attr_name, attr_value| %>
   <%if attr_name != "FULL_ADDRESS"%>
-    <p><strong><%= attr_name %>:</strong> <%= attr_value %></p>
+
+    <tr>
+    <td class='text-indent'><%= attr_name %></td>
+    <td class='text-indent'><%= attr_value %></td>
+    </tr>
+
   <% end %>
 <% end %>
-</div>
+</table>
