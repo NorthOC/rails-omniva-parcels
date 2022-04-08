@@ -19,7 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "log/cron_log.log"
 env :PATH, ENV['PATH']
 
 every 1.day, at: '02:30 am' do
