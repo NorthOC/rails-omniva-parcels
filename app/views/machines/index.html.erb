@@ -1,4 +1,4 @@
-<h1>Machines</h1>
+<h1>Paštomatai</h1>
 
 <%= form_with url: "/machines", method: :get do |form| %>
   <%= form.label :filter, "Filter by:" %>
@@ -8,22 +8,30 @@
   <button type='button' onclick="location.href='/'">Reset</button>
 <% end %>
 
-<%= link_to 'Export', 
-    machines_path(request.parameters.merge({format: :xls})), 
-    download: 'pastomatai.xls' %>
-  
+<div>
+  <%= link_to 'Export', 
+    machines_path(format: "csv", :filter => params[:filter], :query => params[:query]), 
+    download: 'pastomatai.csv', 
+    class: 'export-link' %>
+</div>
+
  <table>
   <tr>
     <th>Zip code</th>
     <th>Name</th>
     <th>Adress</th>
   </tr>
+
   <% @machines.each do |item| %>
     <tr>
-    <td class='text-center'><a href='/machines/<%=item.id%>'><%= item.ZIP %></a></td>
-    <td><a href='/machines/<%=item.id%>'><%= item.NAME %></a></td>
-    <td><a href='/machines/<%=item.id%>'><%= item.FULL_ADDRESS %></a></td>
+    <td class='text-center'><%= link_to item.ZIP,
+    machine_path(item, :filter => params[:filter], :query => params[:query]) %></td>
 
+    <td><%= link_to item.NAME, 
+    machine_path(item, :filter => params[:filter], :query => params[:query]), class: 'text-indent' %></td>
+    
+    <td><%= link_to item.FULL_ADDRESS, 
+    machine_path(item, :filter => params[:filter], :query => params[:query]), class: 'text-indent' %></td>
     </tr>
   <% end %>
 </table>
