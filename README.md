@@ -26,4 +26,4 @@ $ crontab -l
 
 ```
 
-Logs informacija: `/log/production.log` arba `/log/development.log` priklausomai nuo aplinkos.
+Sinchronizavimo informacija: `/log/production.log` arba `/log/development.log` priklausomai nuo aplinkos.
