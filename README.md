@@ -1,5 +1,7 @@
 # Install
 
+Rails 6.1.5
+
 ```bash
 
 git@github.com:NorthOC/rails-task.git
