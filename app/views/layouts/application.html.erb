@@ -12,6 +12,26 @@
   </head>
 
   <body>
+    <nav>
+      <% if current_page?(:controller => 'machines', :action => 'index') %>
+        <%= link_to 'Export', 
+        machines_path(format: "csv", :filter => params[:filter], :query => params[:query]), 
+        download: 'pastomatai.csv', 
+        class: 'export-link link' %>
+      <% else %>
+        <%= link_to 'Back', 
+        machines_path(:filter => params[:filter], :query => params[:query]),  
+        class: 'back-link link' %>
+      <% end %>
+
+      <%= form_with url: "/machines", method: :get do |form| %>
+        <%= form.label :filter, "Filter by:" %>
+        <%= select_tag(:filter, options_for_select([['zip code', 'zip'], ['name', 'name'], ['address', 'address']], :selected => params[:filter])) %>
+        <%= form.text_field :query, value: params[:query]%>
+        <%= form.submit "Filter" %>
+        <button type='button' onclick="location.href='/'">Reset</button>
+      <% end %>
+      </nav>
     <%= yield %>
   </body>
 </html>
