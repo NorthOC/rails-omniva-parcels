@@ -22,7 +22,8 @@ $ whenever --update-crontab --set environment='development'
 patikrinti ar suveikė komanda:
 
 ```bash
-$ contab -l
+$ crontab -l
+
 ```
 
-Logs informacija: `/log/cron_log.log`
+Logs informacija: `/log/production.log` arba `/log/development.log` priklausomai nuo aplinkos.
