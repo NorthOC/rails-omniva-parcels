@@ -27,7 +27,7 @@ Rails.logger.info "Repopulating database..."
 puts "Repopulating database..."
 data.each_with_index do |item, index|
 
-  #generate full adress for (used in filtering)
+  #generate full adress for different cases (used in filtering)
   if item["A8_NAME"] != ""
 
     if item["A7_NAME"] == ""
