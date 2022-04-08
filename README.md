@@ -1,24 +1,28 @@
-# README
+# Startup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```bash
+bundle install
+rake db:create
+rake db:migrate
+rake db:seed
+```
+## 1. Kiekvieną naktį sinchronizuotų paštomatus iš: https://www.omniva.lt/locations.json;
 
-Things you may want to cover:
+Padariau su Whenever gem, kuris padeda valdyti cron jobs su `/schedule.rb` failu
 
-* Ruby version
+Norint paleisti:
 
-* System dependencies
+```bash
+whenever --update-crontab
 
-* Configuration
+# arba development aplinkai
+whenever --update-crontab --set environment='development'
+```
 
-* Database creation
+patikrinti ar suveikė komanda:
 
-* Database initialization
+```bash
+contab -l
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Logs informacija: `/log/cron_log.log`
