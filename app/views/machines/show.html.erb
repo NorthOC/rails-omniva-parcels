@@ -1,11 +1,13 @@
 <h1><%= @machine.NAME %></h1>
-<%= link_to "BACK", machines_path(:filter => params[:filter], :query => params[:query])%>
 
-<table class='info-table'>
+<table id='info-table'>
+
+<thead>
   <tr>
     <th>Key</th>
     <th>Value</th>
   </tr>
+</thead>
 
 <% @machine.attributes.each do |attr_name, attr_value| %>
   <%if attr_name != "FULL_ADDRESS"%>
