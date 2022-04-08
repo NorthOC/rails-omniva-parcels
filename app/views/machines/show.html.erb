@@ -1,5 +1,5 @@
 <h1><%= @machine.NAME %></h1>
-<%= link_to "BACK", machines_path()%>
+<%= link_to "BACK", machines_path(:filter => params[:filter], :query => params[:query])%>
 
 <table class='info-table'>
   <tr>
