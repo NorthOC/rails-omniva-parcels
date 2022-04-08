@@ -14,16 +14,50 @@ th, td {
 }
 table{
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   width: 90%;
+}
+.info-table {
+  width: auto;
+  margin: auto;
+  margin-bottom: 2rem;
 }
 tr{
   border: 1px solid black;
 }
+tr:hover td a{
+  text-decoration: none;
+  background-color: rgb(223, 255, 196);
+}
+td a{
+  text-decoration: none;
+  color: rgb(80, 80, 80);
+}
 .text-center{
   text-align: center;
+}
+.text-indent{
+  text-indent: 5px;
 }
 form {
   margin: auto;
   text-align: center;
+  margin-bottom: 0.5rem;
+}
+.export-link{
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  margin-left: 10rem;
+  background-color: #34d449;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 5px;
+  padding: 0.7rem 1rem;
+}
+.export-link:hover, .export-link:active {
+  background-color: #52d364;
+}
+div {
+  text-align: left;
 }
