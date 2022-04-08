@@ -8,26 +8,42 @@
 require 'open-uri'
 
 #omniva data
+Rails.logger.info "loading json data..."
 puts "loading json data..."
 data = URI.open('https://www.omniva.lt/locations.json')
 data = JSON.load(data)
+Rails.logger.info "complete!"
 puts "complete!"
 
 #clean up
+Rails.logger.info "deleting previous data..."
 puts "deleting previous data..."
 Machine.delete_all()
+Rails.logger.info "complete!"
 puts "complete!"
 
 #populate db
+Rails.logger.info "Repopulating database..."
 puts "Repopulating database..."
 data.each_with_index do |item, index|
 
   #generate full adress for (used in filtering)
   if item["A8_NAME"] != ""
-    adress = [item["A5_NAME"] + " " + item["A7_NAME"] + "-" + item["A8_NAME"], item["A2_NAME"], item["A1_NAME"]]
+
+    if item["A7_NAME"] == ""
+    adress = [item["A6_NAME"], item["A8_NAME"], item["A3_NAME"], item["A2_NAME"], item["A1_NAME"]]
+    else
+      adress = [item["A5_NAME"] + " " + item["A7_NAME"] + "-" + item["A8_NAME"], item["A3_NAME"], item["A2_NAME"], item["A1_NAME"]]
+    end
+
+  elsif item["A6_NAME"] != ""
+    adress = [item["A6_NAME"], item["A3_NAME"], item["A2_NAME"], item["A1_NAME"]]
+  elsif item["A5_NAME"] != ""
+    adress = [item["A5_NAME"] + " " + item["A7_NAME"], item["A3_NAME"], item["A2_NAME"], item["A1_NAME"]]
   else
-    adress = [item["A5_NAME"] + " " + item["A7_NAME"], item["A2_NAME"], item["A1_NAME"]]
+    adress = [item["A3_NAME"], item["A2_NAME"], item["A1_NAME"]]
   end
+
   addr_string = ""
   adress.each do |piece|
     if piece != ""
@@ -36,6 +52,7 @@ data.each_with_index do |item, index|
   end
   addr_string += item["A0_NAME"]
 
+  Rails.logger.info "#{index}: adding #{item["NAME"]}"
   puts "#{index}: adding #{item["NAME"]}"
 
   thing = Machine.new(
@@ -72,5 +89,7 @@ data.each_with_index do |item, index|
   thing.save
 
 end
+Rails.logger.info "all done!"
 puts "all done!"
+Rails.logger.info "NOTE: id of first item is #{Machine.first.id} and last item is #{Machine.last.id}"
 puts "NOTE: id of first item is #{Machine.first.id} and last item is #{Machine.last.id}"
