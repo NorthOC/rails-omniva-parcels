@@ -1,10 +1,14 @@
-# Startup
+# Install
 
 ```bash
-$ bundle install
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed
+
+git@github.com:NorthOC/rails-task.git
+bundle install
+rake db:create
+rake db:migrate
+rake db:seed
+rails assets:precompile
+
 ```
 ## 1. Kiekvieną naktį sinchronizuotų paštomatus iš: https://www.omniva.lt/locations.json;
 
