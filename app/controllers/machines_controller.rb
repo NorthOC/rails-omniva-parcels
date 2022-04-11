@@ -1,23 +1,9 @@
 class MachinesController < ApplicationController
   
   def index
-    #filtravimas
-    if params[:filter] == 'zip'
-      @machines = Machine.where(ZIP: params[:query])
-
-    elsif params[:filter] == 'name'
-      query = params[:query].gsub("+", " ")
-      @machines = Machine.where("lower(NAME) LIKE lower(?)", "%#{query}%")
-      
-    elsif params[:filter] == 'address'
-      query = params[:query]
-      query.gsub!("+", " ")
-      query.gsub!("%2C+", ", ")
-      query.gsub!("%2C" ", ")
-      @machines = Machine.where("lower(FULL_ADDRESS) LIKE lower(?)", "%#{query}%")
-    else
-      @machines = Machine.all()
-    end
+    @ransack_params = params[:q] || {}
+    @q = Machine.ransack(@ransack_params)
+    @machines = @q.result(distinct: true)
 
     #export to csv
     respond_to do |format|
@@ -27,6 +13,8 @@ class MachinesController < ApplicationController
   end
 
   def show
+    
+    @q = Machine.ransack(params[:q])
     @machine = Machine.find(params[:id])
   end
 end
