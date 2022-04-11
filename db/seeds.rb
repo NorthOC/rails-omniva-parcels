@@ -52,7 +52,6 @@ data.each_with_index do |item, index|
   end
   addr_string += item["A0_NAME"]
 
-  puts item
   Rails.logger.info "#{index}: adding #{item["NAME"]}"
   puts "#{index}: adding #{item["NAME"]}"
 
