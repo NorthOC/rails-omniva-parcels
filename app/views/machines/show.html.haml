@@ -1,0 +1,11 @@
+%h1= @machine.name
+%table#info-table
+  %thead
+    %tr
+      %th Key
+      %th Value
+  - @machine.attributes.each do |attr_name, attr_value|
+    - if attr_name != "full_address"
+      %tr
+        %td.text-indent= attr_name
+        %td.text-indent= attr_value

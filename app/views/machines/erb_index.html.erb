@@ -1,0 +1,30 @@
+<h1>Paštomatai</h1>
+
+ <table>
+  <thead>
+    <tr>
+      <th>Zip code</th>
+      <th>Name</th>
+      <th>Adress</th>
+    </tr>
+  </thead>
+
+  <% @machines.each do |item| %>
+    <tr>
+    <td class='text-center'><%= link_to item.zip,
+    machine_path(item, q: {zip_eq: params.dig(:q, :zip_eq),
+        name_cont: params.dig(:q, :name_cont),
+        full_address_cont: params.dig(:q, :full_address_cont)}) %></td>
+
+    <td><%= link_to item.name, 
+    machine_path(item, q: {zip_eq: params.dig(:q, :zip_eq),
+        name_cont: params.dig(:q, :name_cont),
+        full_address_cont: params.dig(:q, :full_address_cont)}), class: 'text-indent' %></td>
+    
+    <td><%= link_to item.full_address, 
+    machine_path(item, q: {zip_eq: params.dig(:q, :zip_eq),
+        name_cont: params.dig(:q, :name_cont),
+        full_address_cont: params.dig(:q, :full_address_cont)}), class: 'text-indent' %></td>
+    </tr>
+  <% end %>
+</table>

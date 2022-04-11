@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pastomatai</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <% if current_page?(:controller => 'machines', :action => 'index') %>
+
+      <%= link_to 'Export', 
+        machines_path(format: "csv", 
+        q: {zip_eq: params.dig(:q, :zip_eq),
+        name_cont: params.dig(:q, :name_cont),
+        full_address_cont: params.dig(:q, :full_address_cont)}),
+        download: 'pastomatai.csv', 
+        class: 'export-link link' %>
+
+      <% else %>
+
+        <%= link_to 'Back', 
+        machines_path(q: {zip_eq: params.dig(:q, :zip_eq),
+        name_cont: params.dig(:q, :name_cont),
+        full_address_cont: params.dig(:q, :full_address_cont)}),  
+        class: 'back-link link' %>
+      <% end %>
+
+      <%= simple_search_form_for @q, url: machines_path, method: "GET" do |f| %>
+        <%= f.input :zip_eq , class: 'zip-search'%>
+        <%= f.input :name_cont %>
+        <%= f.input :full_address_cont %>
+        <%= f.submit "Filter", name: ''%>
+        <button type='button' onclick="location.href='/machines'">Reset</button>
+      <% end %>
+
+      </nav>
+    <%= yield %>
+  </body>
+</html>
