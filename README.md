@@ -4,7 +4,7 @@ Rails 6.1.5
 
 ```bash
 
-git clonegit@github.com:NorthOC/rails-task.git
+git clone git@github.com:NorthOC/rails-task.git
 cd rails-task
 bundle install
 rake db:create
