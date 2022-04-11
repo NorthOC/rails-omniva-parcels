@@ -53,16 +53,19 @@ td a{
 }
 form {
   position: relative;
-  text-align: center;
+  text-align: right;
 }
 nav{
   position: fixed;
   top: 0;
   right: 4rem;
-  padding: 0.5rem 7rem 0.5rem 0.5rem;
+  padding: 0.5rem 7rem 0.5rem 5rem;
   border-radius: 0 0 5px 5px;
   background-color: rgba(156, 156, 156, 0.938);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+label{
+  padding-right: 0.5rem;
 }
 #info-table{
   width: auto;
@@ -85,7 +88,8 @@ nav{
   box-shadow: 2px -2px 10px rgba(0, 0, 0, 0.29);
   z-index: 1;
   position: absolute;
-  right: 1rem;
+  right: 1.3rem;
+  bottom: 0.5rem;
 }
 .export-link:hover, .export-link:active {
   background-color: #1faf67;
@@ -100,4 +104,7 @@ nav{
 .back-link{
   background-color: #005498;
   padding: 10px 16px;
+}
+.zip-search{
+  width: 4rem;
 }
