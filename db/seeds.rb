@@ -52,38 +52,39 @@ data.each_with_index do |item, index|
   end
   addr_string += item["A0_NAME"]
 
+  puts item
   Rails.logger.info "#{index}: adding #{item["NAME"]}"
   puts "#{index}: adding #{item["NAME"]}"
 
   thing = Machine.new(
     id: index,
-    ZIP: item["ZIP"], 
-    NAME: item["NAME"], 
+    zip: item["ZIP"], 
+    name: item["NAME"], 
     TYPE: item["TYPE"], 
-    A0_NAME: item["A0_NAME"], 
-    A1_NAME: item["A1_NAME"], 
-    A2_NAME: item["A2_NAME"], 
-    A3_NAME: item["A3_NAME"], 
-    A4_NAME: item["A4_NAME"], 
-    A5_NAME: item["A5_NAME"], 
-    A6_NAME: item["A6_NAME"], 
-    A7_NAME: item["A7_NAME"], 
-    A8_NAME: item["A8_NAME"],
-    X_COORDINATE: item["X_COORDINATE"], 
-    Y_COORDINATE: item["Y_COORDINATE"], 
-    SERVICE_HOURS: item["SERVICE_HOURS"], 
-    TEMP_SERVICE_HOURS: item["TEMP_SERVICE_HOURS"], 
-    TEMP_SERVICE_HOURS_UNTIL: item["TEMP_SERVICE_HOURS_UNTIL"], 
-    TEMP_SERVICE_HOURS_2: item["TEMP_SERVICE_HOURS_2"], 
-    TEMP_SERVICE_HOURS_2_UNTIL: item["TEMP_SERVICE_HOURS_2_UNTIL"], 
+    a0_name: item["A0_NAME"], 
+    a1_name: item["A1_NAME"], 
+    a2_name: item["A2_NAME"], 
+    a3_name: item["A3_NAME"], 
+    a4_name: item["A4_NAME"], 
+    a5_name: item["A5_NAME"], 
+    a6_name: item["A6_NAME"], 
+    a7_name: item["A7_NAME"], 
+    a8_name: item["A8_NAME"],
+    x_coordinate: item["X_COORDINATE"], 
+    y_coordinate: item["Y_COORDINATE"], 
+    service_hours: item["SERVICE_HOURS"], 
+    temp_service_hours: item["TEMP_SERVICE_HOURS"], 
+    temp_service_hours_until: item["TEMP_SERVICE_HOURS_UNTIL"], 
+    temp_service_hours_2: item["TEMP_SERVICE_HOURS_2"], 
+    temp_service_hours_2_until: item["TEMP_SERVICE_HOURS_2_UNTIL"], 
     comment_est: item["comment_est"], 
     comment_eng: item["comment_eng"], 
     comment_rus: item["comment_rus"], 
     comment_lav: item["comment_lav"], 
     comment_lit: item["comment_lit"], 
-    MODIFIED: item["MODIFIED"],
+    modified: item["MODIFIED"],
     #adress for easier db filtering
-    FULL_ADDRESS: addr_string
+    full_address: addr_string
   )
 
   thing.save
