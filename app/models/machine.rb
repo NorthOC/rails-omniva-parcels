@@ -6,7 +6,7 @@ class Machine < ApplicationRecord
       name = %w(ZIP Name Adress)
       csv << name
       all.each do |item|
-        row = [item.ZIP, item.NAME, item.FULL_ADDRESS]
+        row = [item.zip, item.name, item.full_address]
         csv << row
       end
     end
