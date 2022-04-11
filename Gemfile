@@ -58,3 +58,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #for daily tasks
 gem 'whenever', require: false
+
+# filtering and simple form
+gem 'simple_form_ransack'
+gem 'ransack'
+gem 'simple_form'
+
+gem 'haml-rails'
