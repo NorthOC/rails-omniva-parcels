@@ -1,8 +1,8 @@
-# Parcel Terminal Dashboard with Ruby on Rails + Omniva API + Whatever gem
+# Parcel Terminal Dashboard with Ruby on Rails + Omniva API + cron job
 
-An app with advanced filtering to view the list/details of Omnival parcel terminals and download the filtered list in Excel format. The database is refreshed each night via cron job (Whatever gem)
+An app with advanced filtering to view the list/details of Omnival parcel terminals and download the filtered list in Excel format. The Omniva parcel terminal data is stored in a database, which is refreshed each night via cron job (Whatever gem)
 
-# Install
+## Install
 
 Rails 6.1.5
 
@@ -18,9 +18,7 @@ rails assets:precompile
 
 ```
 
-Padariau su Whenever gem, kuris padeda valdyti cron jobs su `config/schedule.rb` failu
-
-Norint paleisti:
+## Set cron task
 
 ```bash
 $ whenever --update-crontab
@@ -29,4 +27,4 @@ $ whenever --update-crontab
 $ whenever --update-crontab --set environment='development'
 ```
 
-Cron task logs are stored in `/log/production.log` for production and `/log/development.log` for development respectively.
+Task logs are stored in `/log/production.log` for production and `/log/development.log` for development respectively.
